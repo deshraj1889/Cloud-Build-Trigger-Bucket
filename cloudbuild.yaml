@@ -16,11 +16,7 @@
 #   args: ['echo', 'hello world']
 
 steps:
-- name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'document.txt',]
-# operations that use previous_results.zip and produce new_results.zip
-- name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://desu-project/GCP-trigger-files/']
+args: ['cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
 # - name: 'bash'
 #   args: ['echo', 'Hello world!']
 logsBucket: 'gs://desu-project'
