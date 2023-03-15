@@ -16,8 +16,13 @@
 #   args: ['echo', 'hello world']
 
 steps:
-- name: 'bash'
-  args: ['echo', 'Hello world!']
+- name: gcr.io/cloud-builders/gsutil
+  args: ['cp', 'document.txt',]
+# operations that use previous_results.zip and produce new_results.zip
+- name: gcr.io/cloud-builders/gsutil
+  args: ['cp', 'gs://desu-project/GCP-trigger-files/']
+# - name: 'bash'
+#   args: ['echo', 'Hello world!']
 logsBucket: 'gs://desu-project'
 serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
 options:
