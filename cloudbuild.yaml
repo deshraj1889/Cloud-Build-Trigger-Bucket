@@ -16,6 +16,6 @@
 #   args: ['echo', 'hello world']
 
 
- steps:
+   steps:
    - name: golang
-     args: ['go', 'run', 'document.txt']
+     args: ['go', 'run', 'quickstart-automate/main.go']
