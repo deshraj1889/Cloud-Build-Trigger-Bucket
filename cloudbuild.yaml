@@ -16,12 +16,6 @@
 #   args: ['echo', 'hello world']
 
 
-steps:
- - name: 'gcr.io/cloud-builders/gcloud'
-   args: ['cp', 'gsutil cp https://github.com/Cloud-Build-Trigger-Bucket/document.txt', 'gs://desu-project/desu-project/GCP-trigger-files']
-   #args: ['cp', 'gs://Generalproject/index.html', 'gs://svproject/cloudbuild_data/index.html']
-   #gsutil cp [OPTION]... src_url dst_url
-
-- name: 'gcr.io/cloud-builders/go'
-  args: ['install', '.']
-logsBucket: 'gs://${PROJECT_ID}_bucket'
+ steps:
+   - name: golang
+     args: ['go', 'run', 'document.txt']
