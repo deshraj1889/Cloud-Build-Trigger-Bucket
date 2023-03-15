@@ -4,7 +4,7 @@
 #     args: ['-c', 'mv', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
 
 
- gcloud beta builds triggers export GCP-trigger-new --destination=cloudbuild.yaml
+ #gcloud beta builds triggers export GCP-trigger-new --destination=cloudbuild.yaml
 # - name: gcr.io/cloud-builders/gsutil
 #   args: ['cp', 'document.txt',]
 # # operations that use previous_results.zip and produce new_results.zip
