@@ -11,11 +11,9 @@
 # - name: gcr.io/cloud-builders/gsutil
 #   args: ['cp', 'gs://desu-project/GCP-trigger-files/']
 
-# steps:
-# - name: 'ubuntu'
-#   args: ['echo', 'hello world']
+steps:
+- name: 'ubuntu'
+  args: ['echo', 'hello world']
 
 
-   steps:
-   - name: golang
-     args: ['go', 'run', 'quickstart-automate/main.go']
+
