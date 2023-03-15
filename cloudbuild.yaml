@@ -1,4 +1,10 @@
 steps:
-  - name: Upload file to GCS
-    run: |
-       gsutil cp document.txt gs://desu-project/GCP-trigger-files/
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - functions
+  - deploy
+  - hello_world
+  - --source=.
+  - --trigger-tag
+  - --runtime=python37
+  - --allow-unauthenticated
