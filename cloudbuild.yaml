@@ -11,3 +11,13 @@ steps:
 # - name: gcr.io/cloud-builders/gsutil
 #   args: ['cp', 'gs://desu-project/GCP-trigger-files/']
 
+- name: gcr.io/cloud-builders/gcloud
+    id: Trigger application image build
+    args:
+      - beta
+      - builds
+      - triggers
+      - run
+      - GCP-trigger-new
+      - --branch=main
+
