@@ -3,7 +3,7 @@
 #     entrypoint: 'gcloud'
 #     args: ['-c', 'mv', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
 
-steps:
+
  gcloud beta builds triggers export GCP-trigger-new --destination=cloudbuild.yaml
 # - name: gcr.io/cloud-builders/gsutil
 #   args: ['cp', 'document.txt',]
@@ -11,13 +11,10 @@ steps:
 # - name: gcr.io/cloud-builders/gsutil
 #   args: ['cp', 'gs://desu-project/GCP-trigger-files/']
 
-- name: gcr.io/cloud-builders/gcloud
-    id: Trigger application image build
-    args:
-      - beta
-      - builds
-      - triggers
-      - run
-      - GCP-trigger-new
-      - --branch=main
-
+steps:
+- name: 'ubuntu'
+  args: ['echo', 'hello world']
+substitutions:
+    _SUB_VALUE: unused
+options:
+    substitution_option: 'ALLOW_LOOSE'
