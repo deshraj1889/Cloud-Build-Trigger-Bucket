@@ -1,4 +1,9 @@
+# steps:
+#  - name: 'gcr.io/cloud-builders/docker'
+#     entrypoint: /bin/bash
+#     args: ['-c', 'mv', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
 steps:
- - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: /bin/bash
-    args: ['-c', 'mv', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=hello']
+  dir: 'examples/hello_world'
