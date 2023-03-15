@@ -15,5 +15,13 @@
 # - name: 'ubuntu'
 #   args: ['echo', 'hello world']
 
+steps:
+- name: 'bash'
+  args: ['echo', 'Hello world!']
+logsBucket: 'gs://desu-project'
+serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
+options:
+  logging: GCS_ONLY
+
 
 
