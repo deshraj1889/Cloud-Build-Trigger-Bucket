@@ -1,10 +1,4 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - functions
-  - deploy
-  - hello_world
-  - --source=.
-  - --trigger-tag
-  - --runtime=python37
-  - --allow-unauthenticated
+ - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: /bin/bash
+    args: ['-c', 'mv', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
