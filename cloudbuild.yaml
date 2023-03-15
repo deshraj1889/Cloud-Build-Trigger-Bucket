@@ -5,8 +5,8 @@
 
 steps:
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://mybucket/results.zip', 'previous_results.zip']
+  args: ['cp', 'document.txt',]
 # operations that use previous_results.zip and produce new_results.zip
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'new_results.zip', 'gs://mybucket/results.zip']
+  args: ['cp', 'gs://desu-project/GCP-trigger-files/']
 
