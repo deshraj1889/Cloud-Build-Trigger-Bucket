@@ -1,38 +1,32 @@
 # steps:
-#  - name: 'gcr.io/cloud-builders/docker'
-#     entrypoint: 'gcloud'
-#     args: ['-c', 'mv', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
+# - name: 'gcr.io/cloud-builders/gsutil'
+#   entrypoint: 'bash'
+#   # Upload it into a GCS bucket.
+# - name: 'gcr.io/cloud-builders/gsutil'
+#   args: ['cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
+# logsBucket: 'gs://desu-project/GCP-trigger-files/'
+# serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
+# options:
+#   logging: GCS_ONLY
 
-
- #gcloud beta builds triggers export GCP-trigger-new --destination=cloudbuild.yaml
-# - name: gcr.io/cloud-builders/gsutil
-#   args: ['cp', 'document.txt',]
-# # operations that use previous_results.zip and produce new_results.zip
-# - name: gcr.io/cloud-builders/gsutil
-#   args: ['cp', 'gs://desu-project/GCP-trigger-files/']
+#The gcr.io/cloud-builders/gsutil image is maintained by the Cloud Build team, but it may not support the most recent versions of gsutil. 
+#We also do not provide historical pinned versions of gsutil nor support across multiple platforms.
 
 # steps:
-# - name: 'ubuntu'
-#   args: ['echo', 'hello world']
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   args: ['gsutil', 'cp', 'localfile.zip', 'gs://mybucket/remotefile.zip']
+
 
 steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   entrypoint: 'bash'
-- name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
+  # Upload it into a GCS bucket.
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args: ['gsutil', 'cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
 logsBucket: 'gs://desu-project/GCP-trigger-files/'
 serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
 options:
   logging: GCS_ONLY
-
-# steps:
-# # Build the "hello, world" Go binary.
-# - name: 'gcr.io/cloud-builders/go'
-#   args: ['install', 'hello']
-#   env: ['PROJECT_ROOT=hello']
-# # Upload it into a GCS bucket.
-# - name: 'gcr.io/cloud-builders/gsutil'
-#   args: ['cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
 
 
 
