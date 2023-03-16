@@ -15,15 +15,19 @@
 # - name: 'ubuntu'
 #   args: ['echo', 'hello world']
 
-steps:
-- name: 'gcr.io/cloud-builders/gsutil'
-  entrypoint: 'bash'
-#   args: ['echo', 'Hello world!']
-  args: ['-m', 'cp', '-r', '/Cloud-Build-Trigger-Bucket', 'gs://desu-project/GCP-trigger-files/']
-logsBucket: 'gs://desu-project/GCP-trigger-files/'
-serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
-options:
-  logging: GCS_ONLY
+# steps:
+# - name: 'gcr.io/cloud-builders/gsutil'
+#   entrypoint: 'bash'
+# #   args: ['echo', 'Hello world!']
+#   args: ['-m', 'cp', '-r', '/Cloud-Build-Trigger-Bucket', 'gs://desu-project/GCP-trigger-files/']
+# logsBucket: 'gs://desu-project/GCP-trigger-files/'
+# serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
+# options:
+#   logging: GCS_ONLY
+
+
+# Copy the .jar to our volume
+cp /document.txt gs://desu-project/GCP-trigger-files/
 
 
 
