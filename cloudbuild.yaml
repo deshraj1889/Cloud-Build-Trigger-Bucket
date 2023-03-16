@@ -1,3 +1,5 @@
+#working first command
+
 # steps:
 # - name: 'gcr.io/cloud-builders/gsutil'
 #   entrypoint: 'bash'
@@ -9,13 +11,8 @@
 # options:
 #   logging: GCS_ONLY
 
-#The gcr.io/cloud-builders/gsutil image is maintained by the Cloud Build team, but it may not support the most recent versions of gsutil. 
-#We also do not provide historical pinned versions of gsutil nor support across multiple platforms.
 
-# steps:
-# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#   args: ['gsutil', 'cp', 'localfile.zip', 'gs://mybucket/remotefile.zip']
-
+#working second command
 
 # steps:
 # - name: 'gcr.io/cloud-builders/gsutil'
@@ -29,9 +26,19 @@
 #   logging: GCS_ONLY
 
 
+#working third command copy all folder
 steps:
+  # Upload it into a GCS bucket.
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  args: ['gsutil', 'cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
+  entrypoint: 'bash'
+  args: ['gsutil', 'cp', '-r', 'Cloud-Build-Trigger-Bucket/', 'gs://desu-project/GCP-trigger-files/']
+logsBucket: 'gs://desu-project/GCP-trigger-files/'
+serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
+options:
+  logging: GCS_ONLY
+
+
+
 
 
 
