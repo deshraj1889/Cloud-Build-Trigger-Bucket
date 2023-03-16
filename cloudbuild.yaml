@@ -15,24 +15,24 @@
 # - name: 'ubuntu'
 #   args: ['echo', 'hello world']
 
-# steps:
-# - name: 'gcr.io/cloud-builders/gsutil'
-#   entrypoint: 'bash'
-# #   args: ['echo', 'Hello world!']
-#   args: ['-m', 'cp', '-r', '/Cloud-Build-Trigger-Bucket', 'gs://desu-project/GCP-trigger-files/']
-# logsBucket: 'gs://desu-project/GCP-trigger-files/'
-# serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
-# options:
-#   logging: GCS_ONLY
-
 steps:
-# Build the "hello, world" Go binary.
-- name: 'gcr.io/cloud-builders/go'
-  args: ['install', 'hello']
-  env: ['PROJECT_ROOT=hello']
-# Upload it into a GCS bucket.
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
+logsBucket: 'gs://desu-project/GCP-trigger-files/'
+serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
+options:
+  logging: GCS_ONLY
+
+# steps:
+# # Build the "hello, world" Go binary.
+# - name: 'gcr.io/cloud-builders/go'
+#   args: ['install', 'hello']
+#   env: ['PROJECT_ROOT=hello']
+# # Upload it into a GCS bucket.
+# - name: 'gcr.io/cloud-builders/gsutil'
+#   args: ['cp', 'document.txt', 'gs://desu-project/GCP-trigger-files/']
 
 
 
