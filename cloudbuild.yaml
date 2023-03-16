@@ -28,9 +28,10 @@
 
 #working third command copy all folder
 steps:
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
   # Upload it into a GCS bucket.
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
   args: ['gsutil', 'cp', '-r', '/', 'gs://desu-project/GCP-trigger-files/']
 logsBucket: 'gs://desu-project/GCP-trigger-files/'
 serviceAccount: 'projects/panel-379806/serviceAccounts/58358689186@cloudbuild.gserviceaccount.com'
